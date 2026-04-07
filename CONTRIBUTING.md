@@ -1,45 +1,39 @@
 # Contributing to WarpIt
 
-We love your contributions! Here's how you can help.
+Thank you for your interest in contributing to WarpIt. This document serves as a guideline for development and submission processes.
 
-## ⚠️ Important Note
+## Restricted Scope
 
-The **Front-end** and **Cloud Deployment** configurations are currently **Private**. Only the **Backend API** (located in the `shortner_api` folder) is available for contributions at this stage. 
+The **WarpIt Frontend** and **Cloud Infrastructure** repositories are private at this time. Only the **Backend API** (located in the `shortner_api` directory) is currently open for public contributions.
 
-## 🛠️ Getting Started
+## Development Workflow
 
-1. **Fork** the repository and clone it locally.
-2. **Setup the environment** as described in the [README.md](README.md#getting-started).
-3. Create a **Branch** for your feature or bug fix: `git checkout -b feature/your-feature-name` or `bugfix/your-bug-fix`.
-4. **Code!** Follow the project's style and conventions.
-5. **Test** your changes locally.
+1. Fork the repository and replicate it locally.
+2. Follow the setup instructions in the [README.md](README.md#getting-started).
+3. Create a feature branch: `git checkout -b feature/your-feature-name`.
+4. Commit your changes with clear, descriptive messages.
+5. Verify your changes locally against a test database.
+6. Push to your fork and submit a Pull Request.
 
-## 📝 Code Style Guidelines
+## Code Standards
 
-- **TypeScript**: Use strict typing where possible.
-- **Naming**: Use camelCase for variables/functions and PascalCase for classes/types.
-- **Formatting**: We use Prettier for code formatting. You can run `npx prettier --write .` before committing.
-- **Linting**: Ensure there are no linting errors by running `npm run lint` (if available).
+- **TypeScript**: Adhere to strict typing where possible.
+- **Naming Conventions**: Use camelCase for variables/functions and PascalCase for types/classes.
+- **Formatting**: Run `npx prettier --write .` before committing changes.
+- **Validation**: New endpoints must include Zod schema validation.
 
-## 🪲 Reporting a Bug
+## Reporting Issues
 
-If you find a bug, please open an **Issue** with:
-- A clear, descriptive title.
-- Steps to reproduce the bug.
-- Expected vs. Actual behavior.
-- Environment details (Node version, OS, etc.).
+If you encounter a bug or have a feature proposal, please open an Issue with the following information:
+- A descriptive title.
+- Detailed steps to reproduce for bugs.
+- Expected versus actual behavior.
+- Proposed implementation details for features.
 
-## 💡 Proposing a Feature
+## Submitting Pull Requests
 
-Got a great idea? Open an **Issue** with the "Feature Request" label. Describe the potential benefit and how you imagine the implementation.
-
-## ✨ Submitting a Pull Request
-
-1. Ensure your code follows the style guidelines.
-2. Provide a descriptive title for the PR.
-3. Reference any related issues (e.g., `Closes #123`).
-4. Wait for a maintainer to review and approve your changes.
+Large changes should be discussed in an Issue first. All Pull Requests will be reviewed by a core maintainer. Ensure your PR description clearly explains the problem it solves and any architectural considerations.
 
 ---
 
-Thank you for being part of the WarpIt community!
+By contributing, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
