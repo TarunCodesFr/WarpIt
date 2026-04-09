@@ -23,7 +23,9 @@
   },
   "packageManager": "pnpm@10.29.3",
   "devDependencies": {
-    "turbo": "^2.9.5"
+    "turbo": "^2.9.5",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0"
   },
   "bugs": {
     "url": "https://github.com/TarunCodesFr/WarpIt/issues"
