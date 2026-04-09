@@ -1,39 +1,42 @@
 # Contributing to WarpIt
 
-Thank you for your interest in contributing to WarpIt. This document serves as a guideline for development and submission processes.
-
-## Restricted Scope
-
-The **WarpIt Frontend** and **Cloud Infrastructure** repositories are private at this time. Only the **Backend API** (located in the `shortner_api` directory) is currently open for public contributions.
+Thank you for your interest in contributing to WarpIt. This project is a full-stack open-source URL shortener, and we welcome contributions to both our Backend API and the Frontend application.
 
 ## Development Workflow
 
-1. Fork the repository and replicate it locally.
-2. Follow the setup instructions in the [README.md](README.md#getting-started).
-3. Create a feature branch: `git checkout -b feature/your-feature-name`.
-4. Commit your changes with clear, descriptive messages.
-5. Verify your changes locally against a test database.
-6. Push to your fork and submit a Pull Request.
+WarpIt is managed as a monorepo using **pnpm** and **Turbo**.
+
+1. **Fork & Clone**: Fork the repository and clone it to your local machine.
+2. **Setup**: Follow the setup instructions in the [README.md](README.md#getting-started).
+3. **Branch**: Create a feature branch: `git checkout -b feature/your-feature-name`.
+4. **Develop**:
+   - Use `pnpm dev` to run the entire stack.
+   - For backend changes, work in `shortner_api/`.
+   - For frontend changes, work in `shortner_web/`.
+   - Shared packages are located in `packages/`.
+5. **Commit**: Write clear, descriptive commit messages following conventional commits if possible.
+6. **Verify**: Ensure your changes work locally and do not introduce regressions.
+7. **Pull Request**: Submit a PR to the `main` branch.
 
 ## Code Standards
 
-- **TypeScript**: Adhere to strict typing where possible.
-- **Naming Conventions**: Use camelCase for variables/functions and PascalCase for types/classes.
-- **Formatting**: Run `npx prettier --write .` before committing changes.
-- **Validation**: New endpoints must include Zod schema validation.
+- **TypeScript**: Adhere to strict typing. Avoid using `any`.
+- **Naming**: Use `camelCase` for variables/functions and `PascalCase` for types/classes/components.
+- **Formatting**: We use Prettier for consistent code style. Run `pnpm format` (if available) or ensure your editor is configured to format on save.
+- **Validation**: All API inputs must be validated using Zod schemas.
 
 ## Reporting Issues
 
-If you encounter a bug or have a feature proposal, please open an Issue with the following information:
-- A descriptive title.
-- Detailed steps to reproduce for bugs.
-- Expected versus actual behavior.
-- Proposed implementation details for features.
+If you encounter a bug or have a feature proposal, please open an Issue with:
+- A descriptive title and summary.
+- Reproduction steps for bugs.
+- Expected vs. actual behavior.
+- Context on why a feature is needed.
 
 ## Submitting Pull Requests
 
-Large changes should be discussed in an Issue first. All Pull Requests will be reviewed by a core maintainer. Ensure your PR description clearly explains the problem it solves and any architectural considerations.
+Large architectural changes should be discussed in an Issue before implementation. All PRs will be reviewed by maintainers. Ensure your PR description explains the "why" behind the changes.
 
 ---
 
-By contributing, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).

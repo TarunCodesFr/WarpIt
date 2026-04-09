@@ -17,9 +17,6 @@ WarpIt is an independent, open-source URL shortening platform. Built for perform
 > [!CAUTION]
 > WarpIt is currently in its **ALPHA** development stage. The software is provided "as is" and may contain significant bugs, security vulnerabilities, or undergo breaking changes without notice. Use in production environments at your own risk.
 
-> [!NOTE]
-> Currently, the **WarpIt Backend API** has been open-sourced. The corresponding frontend application and cloud infrastructure manifests are in active development.
-
 ## Overview
 
 WarpIt provides a robust infrastructure for programmable link management. It is designed to handle high-throughput redirection while providing detailed analytics and secure user isolation. The system is built using modern engineering practices with a focus on type safety and operational visibility.
@@ -32,82 +29,85 @@ The security of our users' data is our highest priority. If you discover any sec
 
 We will acknowledge your report and work to resolve the issue as quickly as possible.
 
+## Tech Stack
+
+The WarpIt ecosystem is built on a modern, type-safe stack:
+
+- **Frontend**: [Next.js](https://nextjs.org/) | [React](https://react.dev/) | [Tailwind CSS](https://tailwindcss.com/) | [Shadcn UI](https://ui.shadcn.com/)
+- **Backend**: [Express](https://expressjs.com/) | [Node.js](https://nodejs.org/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/) with [Prisma ORM](https://www.prisma.io/)
+- **Logic & Validation**: [TypeScript](https://www.typescriptlang.org/) | [Zod](https://zod.dev/)
+- **Build System**: [Turbo](https://turbo.build/)
+
 ## Core Features
 
-- **Authenticated API**: Secure JWT-based authentication for administrative operations and link management.
-- **Relational Integrity**: Built on PostgreSQL with Prisma ORM to ensure data consistency and schema-level validation.
+- **Authenticated Dashboard**: Manage links and view analytics through a modern, responsive UI.
+- **Secure API**: JWT-based authentication for administrative operations and link management.
+- **Relational Integrity**: Powered by PostgreSQL to ensure data consistency and schema-level validation.
 - **Dynamic Analytics**: Real-time tracking of link engagement metrics, including click counts and origin data.
-- **Strict Validation**: Utilizing Zod for runtime schema validation across all API boundaries.
 - **Structured Logging**: High-performance logging via Pino for production-grade observability.
 
 ---
 
 ## Technical Architecture
 
-The WarpIt ecosystem is architected for scalability and maintainability. The current implementation centers on the `shortner_api`.
+WarpIt is architected as a monorepo for seamless full-stack development.
 
-### Internal Module Structure
-The API follows a modular structure to ensure clear Separation of Concerns (SoC):
-- **Core Modules**: Contained in `src/core/modules/v1/`, defining the primary business logic for Links and Authentication.
-- **Database Layer**: Managed via Prisma in `src/packages/prisma.ts`, providing a type-safe abstraction over PostgreSQL.
-- **Utilities**: Centralized logging, configuration management, and validation helpers in `src/utils/`.
-
-### Authentication Flow
-WarpIt implements a stateless authentication mechanism:
-1. **Identity Verification**: Users provide credentials via the `/auth/login` endpoint.
-2. **Token Issuance**: Upon successful validation, a JWT (JSON Web Token) is generated using a secure `JWT_SECRET`.
-3. **Middleware Enforcement**: Protected routes utilize a custom middleware to verify the HMAC signature of incoming Bearer tokens.
+### Workspace Structure
+- **`shortner_web`**: Next.js frontend application providing the user dashboard and landing experience.
+- **`shortner_api`**: Express/TypeScript API handling link redirection, analytics, and business logic.
+- **`packages/`**: Shared configurations and utilities across the workspace.
 
 ### Design Principles
-- **Type Safety**: End-to-end type safety using TypeScript to minimize runtime exceptions.
-- **Statelessness**: The API is designed to be horizontally scalable by maintaining no local session state.
-- **Schema-Driven**: API inputs and environment variables are strictly validated using Zod schemas.
+- **End-to-End Type Safety**: Shared types and strict TypeScript configuration across the stack.
+- **Modular Scalability**: Decoupled frontend and backend allowing for independent scaling and deployment.
+- **Schema-Driven**: API boundaries and environment variables validated using Zod.
 
 ---
 
 ## Getting Started
 
-Follow these instructions to set up the WarpIt Backend API for local development.
+Follow these instructions to set up the full WarpIt stack locally.
 
 ### Prerequisites
 
-- Node.js (LTS version recommended)
-- A running PostgreSQL instance
-- npm or yarn
+- [Node.js](https://nodejs.org/) (LTS)
+- [pnpm](https://pnpm.io/) (Recommended)
+- PostgreSQL instance
 
-### Installation
+### Installation & Setup
 
-1. Clone the repository:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/TarunCodesFr/WarpIt.git
    cd WarpIt
    ```
 
-2. Navigate to the API directory and install dependencies:
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
+
+3. **Configure Environment**:
+   - Navigate to `shortner_api/` and create a `.env` file with `DATABASE_URL` and `JWT_SECRET`.
+   - Setup your database connection string.
+
+4. **Initialize Database**:
    ```bash
    cd shortner_api
-   npm install
-   ```
-
-3. Configure the environment:
-   Create a `.env` file in the `shortner_api` directory with the following variables:
-   ```env
-   PORT=5000
-   DATABASE_URL="postgresql://user:password@localhost:5432/warpit"
-   JWT_SECRET="your_secure_random_key"
-   BASE_URL="http://localhost:3000"
-   ```
-
-4. Prepare the database:
-   ```bash
    npx prisma migrate dev
    npx prisma generate
    ```
 
-5. Run the development server:
-   ```bash
-   npm run dev
-   ```
+### Development
+
+Run both the API and Web applications concurrently using Turbo:
+
+```bash
+pnpm dev
+```
+
+The API will be available at `http://localhost:5000` (or your configured port) and the Web dashboard at `http://localhost:3000`.
 
 ---
 
@@ -122,33 +122,29 @@ The API endpoints are versioned and accessible under `/api/v1/`.
 ### Link Management
 - `POST /api/v1/links`: Generates a new shortened URL (Requires Bearer Token).
 - `GET /api/v1/links/:id`: Retrieves detailed analytics for a specific link.
-- `GET /:shortId`: Public endpoint that handles high-speed redirection.
+- `GET /:shortId`: Public redirection endpoint.
 
 ---
 
 ## Project Roadmap
 
-- [ ] **Phase 1**: Stability improvements and automated integration testing.
-- [ ] **Phase 2**: Release of the WarpIt Frontend (React/Next.js/Tailwind).
-- [ ] **Phase 3**: Multi-domain support and automated Let's Encrypt integration.
-- [ ] **Phase 4**: Advanced analytics dashboard with geographic and agent-based insights.
+- [x] **Phase 1**: Stability improvements and core API development.
+- [x] **Phase 2**: Launch of the WarpIt Open-Source Frontend.
+- [ ] **Phase 3**: Advanced analytics (Geographic/Device insights).
+- [ ] **Phase 4**: Multi-domain support and automated SSL management.
 
 ---
 
 ## Contributing
 
-Contributions are welcome. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development guidelines and Pull Request processes.
-
-## Code of Conduct
-
-All contributors are expected to uphold the [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a welcoming and professional community.
+Contributions are welcome. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-This project is licensed under the **GNU Affero General Public License v3.0**. See the [LICENSE](LICENSE) file for the full license text.
+This project is licensed under the **GNU Affero General Public License v3.0**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="left">
-  Built for the open-source community by <b>TarunCodes</b>
+  Built with ❤️ for the open-source community by <b>TarunCodes</b>
 </div>
