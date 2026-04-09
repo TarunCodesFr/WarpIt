@@ -1,0 +1,33 @@
+
+> shortner_web@0.1.0 build /home/taruncodes/Documents/Startups/url-shortner/shortner_web
+> next build
+
+▲ Next.js 16.2.3 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.2s
+  Running TypeScript ...
+Failed to type check.
+
+./components/marketing/Hero.tsx:44:23
+Type error: Type '{ hidden: { opacity: number; y: number; }; visible: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+
+  [90m42 |[0m           className=[32m"text-center space-y-8"[0m
+  [90m43 |[0m         >
+[31m[1m>[0m [90m44 |[0m           <motion.div variants={itemVariants} className=[32m"flex justify-center"[0m>
+  [90m   |[0m                       [31m[1m^[0m
+  [90m45 |[0m             <[33mBadge[0m variant=[32m"secondary"[0m className=[32m"px-5 py-1.5 rounded-full bg-primary/5 te...[0m
+  [90m46 |[0m               <[33mZap[0m className=[32m"h-4 w-4 fill-primary"[0m />
+  [90m47 |[0m               [33mNext[0m-[33mGen[0m [33mURL[0m [33mArchitecture[0m
+Next.js build worker exited with code: 1 and signal: null
+ ELIFECYCLE  Command failed with exit code 1.

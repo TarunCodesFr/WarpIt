@@ -1,0 +1,151 @@
+
+> shortner_web@0.1.0 build /home/taruncodes/Documents/Startups/url-shortner/shortner_web
+> next build
+
+▲ Next.js 16.2.3 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 7 errors:
+./shortner_web/app/page.tsx:3:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/app/page.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/app/page.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./shortner_web/components/marketing/CTA.tsx:3:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/components/marketing/CTA.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/components/marketing/CTA.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./shortner_web/components/marketing/FeaturesBento.tsx:3:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/components/marketing/FeaturesBento.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/components/marketing/FeaturesBento.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./shortner_web/components/marketing/Hero.tsx:3:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/components/marketing/Hero.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/components/marketing/Hero.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./shortner_web/components/marketing/Stats.tsx:3:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/components/marketing/Stats.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/components/marketing/Stats.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./shortner_web/components/navbar.tsx:6:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/components/navbar.tsx [Client Component Browser]
+    ./shortner_web/app/register/page.tsx [Client Component Browser]
+    ./shortner_web/app/register/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/components/navbar.tsx [Client Component SSR]
+    ./shortner_web/app/register/page.tsx [Client Component SSR]
+    ./shortner_web/app/register/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./shortner_web/components/shortener/ShortenerTool.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+
+
+Import traces:
+  Client Component Browser:
+    ./shortner_web/components/shortener/ShortenerTool.tsx [Client Component Browser]
+    ./shortner_web/components/marketing/Hero.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Client Component Browser]
+    ./shortner_web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./shortner_web/components/shortener/ShortenerTool.tsx [Client Component SSR]
+    ./shortner_web/components/marketing/Hero.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Client Component SSR]
+    ./shortner_web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./shortner_web/app/page.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./shortner_web/components/marketing/CTA.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./shortner_web/components/marketing/FeaturesBento.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./shortner_web/components/marketing/Hero.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./shortner_web/components/marketing/Stats.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./shortner_web/components/navbar.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./shortner_web/components/shortener/ShortenerTool.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+ ELIFECYCLE  Command failed with exit code 1.
