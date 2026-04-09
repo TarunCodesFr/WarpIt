@@ -1,3 +1,4 @@
 packages:
   - 'shortner_api'
   - 'packages/*'
+  - 'shortner_web'
