@@ -49,7 +49,7 @@ export function FeaturesBento() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[250px]">
           {features.map((feature, i) => (
             <motion.div
               key={i}
@@ -57,9 +57,10 @@ export function FeaturesBento() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={cn("group", feature.className)}
+              className={cn("group h-full", feature.className.split(" ").filter(c => c.startsWith("md:")).join(" "))}
             >
-              <Card className="h-full p-8 flex flex-col justify-between border-primary/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 bg-card/50 backdrop-blur-sm relative overflow-hidden group-hover:-translate-y-1">
+              <Card className="h-full p-6 md:p-8 flex flex-col justify-between border-primary/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 bg-card/50 backdrop-blur-sm relative overflow-hidden group-hover:-translate-y-1">
+
                 <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
                    <div className="rotate-12 scale-150">{feature.icon}</div>
                 </div>

@@ -48,17 +48,18 @@ export function Hero() {
             </Badge>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="space-y-4 max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-[0.95] text-foreground">
+          <motion.div variants={itemVariants} className="space-y-6 max-w-4xl mx-auto px-2">
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-[0.95] text-foreground">
               Simplify your links.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-500 to-amber-400">
                 Warp your brand.
               </span>
             </h1>
-            <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed">
               Transform overwhelming URLs into precise, professional, and trackable marketing assets in milliseconds.
             </p>
           </motion.div>
+
 
           <motion.div 
             variants={itemVariants}

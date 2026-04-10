@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
 import { Link2, Copy, Check, Zap, ArrowRight, ShieldCheck, BarChart3 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
 export function ShortenerTool() {
   const [url, setUrl] = useState("")
@@ -41,8 +42,9 @@ export function ShortenerTool() {
       setTimeout(() => {
         if (data.success) {
           setShortUrl(data.data.shortUrl)
+          toast.success("Link warped successfully!")
         } else {
-          alert(data.message || "Failed to shorten URL")
+          toast.error(data.message || "Failed to shorten URL")
         }
         setLoading(false)
         setProgress(0)
@@ -51,7 +53,7 @@ export function ShortenerTool() {
     } catch (error) {
       clearInterval(interval)
       console.error("Error shortening URL:", error)
-      alert("Connectivity issue. Ensure the backend is active.")
+      toast.error("Connectivity issue. Ensure the backend is active.")
       setLoading(false)
       setProgress(0)
     }
@@ -60,6 +62,7 @@ export function ShortenerTool() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shortUrl)
     setCopied(true)
+    toast.success("Copied to clipboard")
     setTimeout(() => setCopied(false), 2000)
   }
 
@@ -127,14 +130,14 @@ export function ShortenerTool() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ type: "spring", damping: 20, stiffness: 100 }}
-            className="mt-8"
+            className="mt-6 md:mt-8"
           >
-            <div className="bg-primary/5 border border-primary/20 rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
-              <div className="flex-grow w-full">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary/70 mb-2 px-1">Successfully Warped</p>
-                <div className="bg-background/80 border rounded-2xl p-4 md:p-5 font-mono text-xl md:text-2xl font-semibold text-foreground flex items-center justify-between group overflow-hidden">
-                  <span className="truncate mr-4">{shortUrl}</span>
-                  <Check className="h-6 w-6 text-green-500 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+            <div className="bg-primary/5 border border-primary/20 rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-8 flex flex-col md:flex-row items-center gap-4 md:gap-6 shadow-sm">
+              <div className="flex-grow w-full min-w-0">
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary/70 mb-2 px-1 text-center md:text-left">Successfully Warped</p>
+                <div className="bg-background/80 border rounded-xl md:rounded-2xl p-3 md:p-5 font-mono text-base md:text-2xl font-semibold text-foreground flex items-center justify-between group overflow-hidden">
+                  <span className="truncate mr-2 md:mr-4">{shortUrl}</span>
+                  <Check className="h-4 w-4 md:h-6 md:w-6 text-green-500 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 </div>
               </div>
               <Button 
@@ -142,7 +145,7 @@ export function ShortenerTool() {
                 size="lg"
                 variant={copied ? "outline" : "default"}
                 className={cn(
-                  "h-16 px-10 rounded-2xl font-bold text-lg min-w-[160px] transition-all",
+                  "h-12 md:h-16 px-6 md:px-10 rounded-xl md:rounded-2xl font-bold text-base md:text-lg w-full md:w-auto min-w-[140px] md:min-w-[160px] transition-all",
                   copied ? "border-green-500/50 text-green-600 bg-green-50/50" : "shadow-lg hover:shadow-primary/20 hover:-translate-y-1"
                 )}
               >

@@ -13,12 +13,24 @@ export function Navbar() {
   const { theme, setTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
+    
+    // Check for auth token
+    const token = localStorage.getItem("token")
+    setIsLoggedIn(!!token)
+
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    setIsLoggedIn(false)
+    window.location.reload() // Or redirect to home
+  }
 
   return (
     <nav className={cn(
@@ -60,14 +72,27 @@ export function Navbar() {
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Link href="/login">
-              <Button variant="ghost" className="font-bold uppercase tracking-widest text-xs h-10 px-6 rounded-xl">Login</Button>
-            </Link>
-            <Link href="/register">
-              <Button size="sm" className="font-bold uppercase tracking-widest text-xs h-10 px-6 rounded-xl shadow-lg shadow-primary/10">Get Started</Button>
-            </Link>
+            {isLoggedIn ? (
+              <Button 
+                variant="outline" 
+                onClick={handleLogout}
+                className="font-bold uppercase tracking-widest text-xs h-10 px-6 rounded-xl border-primary/20 hover:bg-primary/5"
+              >
+                Logout
+              </Button>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button variant="ghost" className="font-bold uppercase tracking-widest text-xs h-10 px-6 rounded-xl">Login</Button>
+                </Link>
+                <Link href="/register">
+                  <Button size="sm" className="font-bold uppercase tracking-widest text-xs h-10 px-6 rounded-xl shadow-lg shadow-primary/10">Get Started</Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
+
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-4">
@@ -96,13 +121,25 @@ export function Navbar() {
             <Link href="#" onClick={() => setMobileMenuOpen(false)}>Resources</Link>
           </div>
           <div className="flex flex-col gap-3 pt-4 border-t border-primary/10">
-            <Link href="/login" className="w-full">
-              <Button variant="ghost" className="w-full h-12 font-bold uppercase tracking-widest text-xs rounded-xl" onClick={() => setMobileMenuOpen(false)}>Login</Button>
-            </Link>
-            <Link href="/register" className="w-full">
-              <Button className="w-full h-12 font-bold uppercase tracking-widest text-xs rounded-xl shadow-lg" onClick={() => setMobileMenuOpen(false)}>Get Started</Button>
-            </Link>
+            {isLoggedIn ? (
+              <Button 
+                onClick={handleLogout}
+                className="w-full h-12 font-bold uppercase tracking-widest text-xs rounded-xl shadow-lg"
+              >
+                Logout
+              </Button>
+            ) : (
+              <>
+                <Link href="/login" className="w-full">
+                  <Button variant="ghost" className="w-full h-12 font-bold uppercase tracking-widest text-xs rounded-xl" onClick={() => setMobileMenuOpen(false)}>Login</Button>
+                </Link>
+                <Link href="/register" className="w-full">
+                  <Button className="w-full h-12 font-bold uppercase tracking-widest text-xs rounded-xl shadow-lg" onClick={() => setMobileMenuOpen(false)}>Get Started</Button>
+                </Link>
+              </>
+            )}
           </div>
+
         </motion.div>
       )}
     </nav>
