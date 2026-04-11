@@ -45,7 +45,7 @@ export async function createCustomRedirectLink(req: Request, res: Response) {
 
 	// Check if validation failed
 	if (!result.success) {
-		const errors = result.error.errors.map((e: any) => e.message).join(', ');
+		const errors = result.error.issues.map((e: any) => e.message).join(', ');
 		throw new ApiError(400, 'VALIDATION_ERROR', errors);
 	}
 

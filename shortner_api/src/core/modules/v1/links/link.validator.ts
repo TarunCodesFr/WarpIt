@@ -1,6 +1,6 @@
 import {z} from 'zod';
 
-const createCustomLinkSchema = z.object({
+export const createCustomLinkSchema = z.object({
 	originalUrl: z.string().url('Please enter a valid URL'),
 	customUrlCode: z
 		.string()
