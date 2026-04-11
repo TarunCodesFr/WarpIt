@@ -49,3 +49,8 @@ export type Users = Prisma.UsersModel
  * 
  */
 export type Link = Prisma.LinkModel
+/**
+ * Model Subscription
+ * 
+ */
+export type Subscription = Prisma.SubscriptionModel

@@ -10,4 +10,5 @@
  */
 export type * from './models/Users'
 export type * from './models/Link'
+export type * from './models/Subscription'
 export type * from './commonInputTypes'

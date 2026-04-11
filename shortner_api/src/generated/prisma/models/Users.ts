@@ -217,6 +217,7 @@ export type UsersWhereInput = {
   passwordHash?: Prisma.StringNullableFilter<"Users"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   links?: Prisma.LinkListRelationFilter
+  subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
 }
 
 export type UsersOrderByWithRelationInput = {
@@ -226,6 +227,7 @@ export type UsersOrderByWithRelationInput = {
   passwordHash?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   links?: Prisma.LinkOrderByRelationAggregateInput
+  subscription?: Prisma.SubscriptionOrderByWithRelationInput
 }
 
 export type UsersWhereUniqueInput = Prisma.AtLeast<{
@@ -238,6 +240,7 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   passwordHash?: Prisma.StringNullableFilter<"Users"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   links?: Prisma.LinkListRelationFilter
+  subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
 }, "id" | "username" | "email">
 
 export type UsersOrderByWithAggregationInput = {
@@ -270,6 +273,7 @@ export type UsersCreateInput = {
   passwordHash?: string | null
   createdAt?: Date | string
   links?: Prisma.LinkCreateNestedManyWithoutUsersInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
 }
 
 export type UsersUncheckedCreateInput = {
@@ -279,6 +283,7 @@ export type UsersUncheckedCreateInput = {
   passwordHash?: string | null
   createdAt?: Date | string
   links?: Prisma.LinkUncheckedCreateNestedManyWithoutUsersInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UsersUpdateInput = {
@@ -287,6 +292,7 @@ export type UsersUpdateInput = {
   passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   links?: Prisma.LinkUpdateManyWithoutUsersNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
 }
 
 export type UsersUncheckedUpdateInput = {
@@ -296,6 +302,7 @@ export type UsersUncheckedUpdateInput = {
   passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   links?: Prisma.LinkUncheckedUpdateManyWithoutUsersNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UsersCreateManyInput = {
@@ -358,6 +365,11 @@ export type UsersNullableScalarRelationFilter = {
   isNot?: Prisma.UsersWhereInput | null
 }
 
+export type UsersScalarRelationFilter = {
+  is?: Prisma.UsersWhereInput
+  isNot?: Prisma.UsersWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -394,11 +406,26 @@ export type UsersUpdateOneWithoutLinksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutLinksInput, Prisma.UsersUpdateWithoutLinksInput>, Prisma.UsersUncheckedUpdateWithoutLinksInput>
 }
 
+export type UsersCreateNestedOneWithoutSubscriptionInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutSubscriptionInput, Prisma.UsersUncheckedCreateWithoutSubscriptionInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutSubscriptionInput
+  connect?: Prisma.UsersWhereUniqueInput
+}
+
+export type UsersUpdateOneRequiredWithoutSubscriptionNestedInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutSubscriptionInput, Prisma.UsersUncheckedCreateWithoutSubscriptionInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutSubscriptionInput
+  upsert?: Prisma.UsersUpsertWithoutSubscriptionInput
+  connect?: Prisma.UsersWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutSubscriptionInput, Prisma.UsersUpdateWithoutSubscriptionInput>, Prisma.UsersUncheckedUpdateWithoutSubscriptionInput>
+}
+
 export type UsersCreateWithoutLinksInput = {
   username: string
   email: string
   passwordHash?: string | null
   createdAt?: Date | string
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
 }
 
 export type UsersUncheckedCreateWithoutLinksInput = {
@@ -407,6 +434,7 @@ export type UsersUncheckedCreateWithoutLinksInput = {
   email: string
   passwordHash?: string | null
   createdAt?: Date | string
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UsersCreateOrConnectWithoutLinksInput = {
@@ -430,6 +458,7 @@ export type UsersUpdateWithoutLinksInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
 }
 
 export type UsersUncheckedUpdateWithoutLinksInput = {
@@ -438,6 +467,57 @@ export type UsersUncheckedUpdateWithoutLinksInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UsersCreateWithoutSubscriptionInput = {
+  username: string
+  email: string
+  passwordHash?: string | null
+  createdAt?: Date | string
+  links?: Prisma.LinkCreateNestedManyWithoutUsersInput
+}
+
+export type UsersUncheckedCreateWithoutSubscriptionInput = {
+  id?: number
+  username: string
+  email: string
+  passwordHash?: string | null
+  createdAt?: Date | string
+  links?: Prisma.LinkUncheckedCreateNestedManyWithoutUsersInput
+}
+
+export type UsersCreateOrConnectWithoutSubscriptionInput = {
+  where: Prisma.UsersWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsersCreateWithoutSubscriptionInput, Prisma.UsersUncheckedCreateWithoutSubscriptionInput>
+}
+
+export type UsersUpsertWithoutSubscriptionInput = {
+  update: Prisma.XOR<Prisma.UsersUpdateWithoutSubscriptionInput, Prisma.UsersUncheckedUpdateWithoutSubscriptionInput>
+  create: Prisma.XOR<Prisma.UsersCreateWithoutSubscriptionInput, Prisma.UsersUncheckedCreateWithoutSubscriptionInput>
+  where?: Prisma.UsersWhereInput
+}
+
+export type UsersUpdateToOneWithWhereWithoutSubscriptionInput = {
+  where?: Prisma.UsersWhereInput
+  data: Prisma.XOR<Prisma.UsersUpdateWithoutSubscriptionInput, Prisma.UsersUncheckedUpdateWithoutSubscriptionInput>
+}
+
+export type UsersUpdateWithoutSubscriptionInput = {
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  links?: Prisma.LinkUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersUncheckedUpdateWithoutSubscriptionInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  links?: Prisma.LinkUncheckedUpdateManyWithoutUsersNestedInput
 }
 
 
@@ -478,6 +558,7 @@ export type UsersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   passwordHash?: boolean
   createdAt?: boolean
   links?: boolean | Prisma.Users$linksArgs<ExtArgs>
+  subscription?: boolean | Prisma.Users$subscriptionArgs<ExtArgs>
   _count?: boolean | Prisma.UsersCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["users"]>
 
@@ -508,6 +589,7 @@ export type UsersSelectScalar = {
 export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "passwordHash" | "createdAt", ExtArgs["result"]["users"]>
 export type UsersInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   links?: boolean | Prisma.Users$linksArgs<ExtArgs>
+  subscription?: boolean | Prisma.Users$subscriptionArgs<ExtArgs>
   _count?: boolean | Prisma.UsersCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UsersIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -517,6 +599,7 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name: "Users"
   objects: {
     links: Prisma.$LinkPayload<ExtArgs>[]
+    subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -919,6 +1002,7 @@ readonly fields: UsersFieldRefs;
 export interface Prisma__UsersClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   links<T extends Prisma.Users$linksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$linksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subscription<T extends Prisma.Users$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SubscriptionClient<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1367,6 +1451,25 @@ export type Users$linksArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.LinkScalarFieldEnum | Prisma.LinkScalarFieldEnum[]
+}
+
+/**
+ * Users.subscription
+ */
+export type Users$subscriptionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Subscription
+   */
+  select?: Prisma.SubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Subscription
+   */
+  omit?: Prisma.SubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SubscriptionInclude<ExtArgs> | null
+  where?: Prisma.SubscriptionWhereInput
 }
 
 /**
