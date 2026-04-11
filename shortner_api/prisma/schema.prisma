@@ -13,12 +13,13 @@ datasource db {
 }
 
 model Users {
-  id           Int      @id @default(autoincrement())
-  username     String   @unique
-  email        String   @unique
+  id           Int           @id @default(autoincrement())
+  username     String        @unique
+  email        String        @unique
   passwordHash String?
-  createdAt    DateTime @default(now())
+  createdAt    DateTime      @default(now())
   links        Link[]
+  subscription Subscription?
 }
 
 model Link {
@@ -32,4 +33,17 @@ model Link {
 
   @@index([shortCode])
   @@index([userId])
+}
+
+model Subscription {
+  id        String    @id @default(cuid())
+  userId    Int       @unique
+  active    Boolean   @default(false)
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user Users @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([active])
 }
