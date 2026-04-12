@@ -7,6 +7,7 @@ import { Hero } from "@/components/marketing/Hero"
 import { FeaturesBento } from "@/components/marketing/FeaturesBento"
 import { Stats } from "@/components/marketing/Stats"
 import { CTA } from "@/components/marketing/CTA"
+import { LiveDemo } from "@/components/marketing/LiveDemo"
 
 export default function LandingPage() {
   return (
@@ -14,25 +15,10 @@ export default function LandingPage() {
       <Navbar />
       
       <main className="flex-grow">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Hero />
-        </motion.div>
-
+        <Hero />
         <Stats />
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1 }}
-        >
-          <FeaturesBento />
-        </motion.div>
-
+        <FeaturesBento />
+        <LiveDemo />
         <CTA />
       </main>
 

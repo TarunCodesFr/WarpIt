@@ -1,9 +1,13 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Shield, Zap, BarChart3, Globe, Smartphone, MousePointer2 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const features = [
   {
@@ -39,45 +43,81 @@ const features = [
 ]
 
 export function FeaturesBento() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+  const titleRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Title Animation
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 90%",
+        }
+      })
+
+      // Cards Staggered Animation
+      gsap.from(cardsRef.current, {
+        y: 60,
+        scale: 0.9,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        }
+      })
+    }, containerRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="py-32 bg-muted/20">
+    <section ref={containerRef} className="py-40 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight">Powerful tools, simple links.</h2>
-          <p className="text-lg text-muted-foreground font-medium">
-            Everything you need to manage your links at scale, built for the modern internet.
+        <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-32 space-y-6">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter">Engineered for <span className="text-primary text-glow">Scale.</span></h2>
+          <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+            Experience the next generation of link management. Heavy-duty features in a lightweight package.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[250px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-auto md:auto-rows-[300px]">
           {features.map((feature, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              ref={el => { cardsRef.current[i] = el }}
               className={cn("group h-full", feature.className.split(" ").filter(c => c.startsWith("md:")).join(" "))}
             >
-              <Card className="h-full p-6 md:p-8 flex flex-col justify-between border-primary/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 bg-card/50 backdrop-blur-sm relative overflow-hidden group-hover:-translate-y-1">
-
-                <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                   <div className="rotate-12 scale-150">{feature.icon}</div>
+              <Card className="h-full p-8 md:p-10 glass hover:glass-darker transition-all duration-500 relative overflow-hidden flex flex-col justify-between group-hover:-translate-y-2 group-hover:shadow-primary/5">
+                
+                <div className="absolute -right-8 -bottom-8 opacity-[0.03] group-hover:opacity-10 transition-all duration-700">
+                   <div className="rotate-12 group-hover:rotate-0 scale-[3] group-hover:scale-[3.5] transform">{feature.icon}</div>
                 </div>
                 
-                <div className="space-y-4 relative z-10">
-                  <div className="p-3 bg-primary/10 w-fit rounded-2xl transition-transform group-hover:scale-110 duration-500">
+                <div className="space-y-6 relative z-10">
+                  <div className="p-4 bg-primary/10 w-fit rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{feature.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed max-w-[280px]">
+                    <h3 className="text-2xl font-black mb-3 tracking-tight group-hover:text-primary transition-colors">{feature.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed max-w-[320px]">
                       {feature.description}
                     </p>
                   </div>
                 </div>
+
+                <div className="pt-8 relative z-10">
+                   <div className="w-12 h-1.5 bg-primary/10 rounded-full group-hover:w-24 group-hover:bg-primary transition-all duration-500" />
+                </div>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
