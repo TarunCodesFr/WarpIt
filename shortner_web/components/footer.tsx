@@ -8,15 +8,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 md:col-span-1 space-y-6">
             <Link href="/" className="flex items-center gap-2.5">
-              <Image src="/warpit-logo.png" alt="WarpIt" width={30} height={30} className="rounded-lg opacity-80" />
+              <Image src="/warpit-logo-new.png" alt="WarpIt" width={30} height={30} className="rounded-lg opacity-80" />
               <span className="text-xl font-black tracking-tight">WarpIt</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              The premier link management infrastructure for modern enterprises. 
+              The premier link management infrastructure for modern enterprises.
               Secure, fast, and engineered for the high-volume web.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-bold text-xs uppercase tracking-[0.2em] mb-6 text-foreground/50">Infrastructure</h4>
             <ul className="space-y-4 text-sm font-medium">

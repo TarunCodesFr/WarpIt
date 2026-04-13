@@ -20,13 +20,13 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
-    
+
     // Check for auth token
     const token = localStorage.getItem("token")
     setIsLoggedIn(!!token)
 
     // GSAP Entry Animation
-    gsap.fromTo(navRef.current, 
+    gsap.fromTo(navRef.current,
       { y: -100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: "expo.out", delay: 0.2 }
     )
@@ -41,7 +41,7 @@ export function Navbar() {
   }
 
   return (
-    <nav 
+    <nav
       ref={navRef}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
@@ -54,7 +54,7 @@ export function Navbar() {
             <div className="absolute -inset-2 bg-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="bg-primary/10 p-1.5 rounded-xl border border-primary/20 relative z-10 transition-transform group-hover:scale-105 duration-500">
               <Image
-                src="/warpit-logo.png"
+                src="/warpit-logo-new.png"
                 alt="WarpIt"
                 width={30}
                 height={30}
@@ -73,7 +73,7 @@ export function Navbar() {
             <Link href="#" className="hover:text-primary hover:tracking-[0.25em] transition-all duration-300">Pricing</Link>
             <Link href="#" className="hover:text-primary hover:tracking-[0.25em] transition-all duration-300">Resources</Link>
           </div>
-          
+
           <div className="flex items-center gap-5 ml-4">
             <Button
               variant="ghost"
@@ -86,8 +86,8 @@ export function Navbar() {
               <span className="sr-only">Toggle theme</span>
             </Button>
             {isLoggedIn ? (
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={handleLogout}
                 className="font-black uppercase tracking-widest text-[10px] h-11 px-8 rounded-2xl border-primary/20 hover:bg-primary/5 transition-all duration-500"
               >
@@ -134,7 +134,7 @@ export function Navbar() {
           </div>
           <div className="flex flex-col gap-3 pt-6 border-t border-primary/10">
             {isLoggedIn ? (
-              <Button 
+              <Button
                 onClick={handleLogout}
                 className="w-full h-14 font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-xl shadow-primary/20"
               >

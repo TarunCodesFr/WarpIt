@@ -25,7 +25,7 @@ export default function LoginPage() {
       try {
         const response = await fetch(`http://localhost:4000/api/v1/auth/google/callback?code=${codeResponse.code}`)
         const data = await response.json()
-        
+
         if (data.success) {
           localStorage.setItem("token", data.data.token)
           toast.success("Welcome back!", { id: loginToast })
@@ -47,7 +47,7 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
     const loginToast = toast.loading("Verifying credentials...")
-    
+
     try {
       const response = await fetch("http://localhost:4000/api/v1/auth/login", {
         method: "POST",
@@ -55,7 +55,7 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       })
       const data = await response.json()
-      
+
       if (data.success) {
         localStorage.setItem("token", data.data.token)
         toast.success("Successfully logged in", { id: loginToast })
@@ -78,7 +78,7 @@ export default function LoginPage() {
         <Card className="w-full max-w-md shadow-xl border-primary/10">
           <CardHeader className="space-y-4 text-center pb-8 border-b mb-6">
             <div className="flex justify-center mb-2">
-              <Image src="/warpit-logo.png" alt="WarpIt" width={60} height={60} className="rounded-2xl" />
+              <Image src="/warpit-logo-new.png" alt="WarpIt" width={60} height={60} className="rounded-2xl" />
             </div>
             <div className="space-y-1">
               <h1 className="text-3xl font-bold tracking-tight">Welcome back</h1>
@@ -89,14 +89,14 @@ export default function LoginPage() {
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="email">Email address</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="m@example.com" 
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="m@example.com"
                   className="h-12 text-base"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required 
+                  required
                 />
               </div>
               <div className="space-y-2">
@@ -106,13 +106,13 @@ export default function LoginPage() {
                     Forgot password?
                   </Link>
                 </div>
-                <Input 
-                  id="password" 
-                  type="password" 
+                <Input
+                  id="password"
+                  type="password"
                   className="h-12 text-base"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required 
+                  required
                 />
               </div>
               <Button type="submit" className="w-full h-12 text-lg font-semibold" disabled={loading}>
