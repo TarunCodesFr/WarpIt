@@ -1,0 +1,27 @@
+---
+title: Authentication
+description: Securely access the WarpIt API.
+---
+
+WarpIt uses Bearer tokens to authenticate requests. You can manage your API tokens in the WarpIt Dashboard.
+
+## Obtaining a Token
+
+1.  Log in to the **WarpIt Dashboard**.
+2.  Navigate to **Settings > API Tokens**.
+3.  Click **Generate New Token**.
+4.  Copy the token and store it securely.
+
+## Using Your Token
+
+Include your API token in the `Authorization` header of your HTTP requests:
+
+```bash
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+> Keep your API token secret. If a token is compromised, revoke it immediately in the dashboard.
+
+## API Limits
+
+Standard accounts have a limit of 10,000 requests per month. For higher limits, consider upgrading to an **Enterprise** plan.

@@ -1,0 +1,20 @@
+---
+title: Get link
+api: GET /link/getlink/{shortCode}
+---
+
+Retrieve the original URL from a short code and redirect the user.
+
+### Path Parameters
+
+- `shortCode` (`string`, required): The unique code of the warped link.  
+  Example: `a1b2c3`
+
+### Response
+
+The API responds with a **302 Redirect** to the original URL.
+
+```bash
+HTTP/1.1 302 Found
+Location: https://google.com
+```

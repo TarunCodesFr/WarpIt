@@ -1,0 +1,31 @@
+---
+title: API Overview
+description: High-level overview of the WarpIt API.
+---
+
+The WarpIt API allows you to programmatically warp URLs, manage custom codes, and retrieve original links. Our API is RESTful and uses JSON for both requests and responses.
+
+## Base URL
+
+All API requests should be made to the following base URL:
+
+```bash
+http://localhost:4000/api/v1
+```
+
+## Authentication
+
+Most endpoints require a Bearer token in the `Authorization` header. See the [Authentication](/docs/introduction/authentication) guide for details.
+
+## Response Format
+
+All responses follow a standard format:
+
+```json
+{
+  "success": true,
+  "data": { ... },
+  "message": "Success message",
+  "status": 200
+}
+```

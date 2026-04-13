@@ -1,0 +1,37 @@
+
+> shortner_docs@1.0.0 build
+> next build
+
+ ⚠ Invalid next.config.mjs options detected: 
+ ⚠     Unrecognized key(s) in object: 'turbopack'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+   ▲ Next.js 15.1.0
+
+[MDX] generated files in 46.23168499999997ms
+   Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Parsing of /home/taruncodes/Documents/Startups/url-shortner/node_modules/.pnpm/fumadocs-mdx@14.2.13_@types+mdast@4.0.4_@types+mdx@2.0.13_@types+react@19.2.14_fumadocs_ad4546fa5a40ebc71e96f98a69b9a450/node_modules/fumadocs-mdx/dist/load-from-file-vlVZ_DdD.js for build dependencies failed at 'import(url.href)'.
+<w> Build dependencies behind this expression are ignored and might cause incorrect cache invalidation.
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Parsing of /home/taruncodes/Documents/Startups/url-shortner/node_modules/.pnpm/fumadocs-mdx@14.2.13_@types+mdast@4.0.4_@types+mdx@2.0.13_@types+react@19.2.14_fumadocs_ad4546fa5a40ebc71e96f98a69b9a450/node_modules/fumadocs-mdx/dist/load-from-file-vlVZ_DdD.js for build dependencies failed at 'import(url.href)'.
+<w> Build dependencies behind this expression are ignored and might cause incorrect cache invalidation.
+Failed to compile.
+
+./app/docs/layout.tsx
+Module not found: Package path ./layout is not exported from package /home/taruncodes/Documents/Startups/url-shortner/shortner_docs/node_modules/fumadocs-ui (see exports field in /home/taruncodes/Documents/Startups/url-shortner/shortner_docs/node_modules/fumadocs-ui/package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/layout.tsx
+Module not found: Package path ./provider is not exported from package /home/taruncodes/Documents/Startups/url-shortner/shortner_docs/node_modules/fumadocs-ui (see exports field in /home/taruncodes/Documents/Startups/url-shortner/shortner_docs/node_modules/fumadocs-ui/package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+./lib/source.ts
+Module not found: Can't resolve '../.source'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/docs/layout.tsx
+
+
+> Build failed because of webpack errors

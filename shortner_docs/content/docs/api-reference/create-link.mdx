@@ -1,0 +1,31 @@
+---
+title: Create link
+api: POST /link/create-link
+---
+
+Create a shortened WarpIt link from an original long URL.
+
+### Body
+
+- `originalUrl` (`string`, required): The long URL you want to warp.  
+  Example: `https://google.com`
+
+### Response
+
+- `success` (`boolean`): Indicates if the request was successful.
+- `data` (`object`)
+  - `shortUrl` (`string`): The generated WarpIt link.
+- `message` (`string`): A descriptive success message.
+
+#### Example
+
+```json
+{
+  "success": true,
+  "data": {
+    "shortUrl": "http://localhost:4000/a1b2c3"
+  },
+  "message": "Here is your Short Url",
+  "status": 200
+}
+```
