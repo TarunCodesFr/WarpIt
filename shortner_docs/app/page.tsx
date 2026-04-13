@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Rocket, Code, Shield, Zap, ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
@@ -6,8 +7,15 @@ export default function HomePage() {
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-24 md:py-32">
         <div className="flex flex-col items-center text-center space-y-8 mb-24">
-          <div className="p-3 bg-primary/10 text-primary rounded-2xl animate-pulse">
-            <Zap className="h-10 w-10" />
+          <div className="p-3 bg-primary/10 rounded-2xl">
+            <Image
+              src="/warpit-logo-new.png"
+              alt="WarpIt logo"
+              width={40}
+              height={40}
+              className="h-40 w-40 object-contain"
+              priority
+            />
           </div>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.8] max-w-4xl">
              Documentation for the <br />
