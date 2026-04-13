@@ -5,7 +5,7 @@
 ---
 
 <div align="left" style="margin:12px 0 8px;">
-  <img src="assets/warpit-png" alt="WarpIt Logo" width="160">
+  <img src="assets/warpit-logo-new.png" alt="WarpIt Logo" width="160">
 </div>
 
 ---
