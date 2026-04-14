@@ -54,11 +54,14 @@ The WarpIt ecosystem is built on a modern, type-safe stack:
 WarpIt is architected as a monorepo for seamless full-stack development.
 
 ### Workspace Structure
+
 - **`shortner_web`**: Next.js frontend application providing the user dashboard and landing experience.
+- shortner_docs: Next.js & FumaDocs powered Documentation for our express based robust api endpoints.
 - **`shortner_api`**: Express/TypeScript API handling link redirection, analytics, and business logic.
 - **`packages/`**: Shared configurations and utilities across the workspace.
 
 ### Design Principles
+
 - **End-to-End Type Safety**: Shared types and strict TypeScript configuration across the stack.
 - **Modular Scalability**: Decoupled frontend and backend allowing for independent scaling and deployment.
 - **Schema-Driven**: API boundaries and environment variables validated using Zod.
@@ -78,12 +81,14 @@ Follow these instructions to set up the full WarpIt stack locally.
 ### Installation & Setup
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/TarunCodesFr/WarpIt.git
    cd WarpIt
    ```
 
 2. **Install dependencies**:
+
    ```bash
    pnpm install
    ```
@@ -116,10 +121,12 @@ The API will be available at `http://localhost:5000` (or your configured port) a
 The API endpoints are versioned and accessible under `/api/v1/`.
 
 ### Authentication
+
 - `POST /api/v1/auth/signup`: Registers a new user account.
 - `POST /api/v1/auth/login`: Validates credentials and returns a secure JWT.
 
 ### Link Management
+
 - `POST /api/v1/links`: Generates a new shortened URL (Requires Bearer Token).
 - `GET /api/v1/links/:id`: Retrieves detailed analytics for a specific link.
 - `GET /:shortId`: Public redirection endpoint.
