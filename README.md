@@ -56,7 +56,7 @@ WarpIt is architected as a monorepo for seamless full-stack development.
 ### Workspace Structure
 
 - **`shortner_web`**: Next.js frontend application providing the user dashboard and landing experience.
-- shortner_docs: Next.js & FumaDocs powered Documentation for our express based robust api endpoints.
+- **`shortner_docs`**`: Next.js & FumaDocs powered Documentation for our express based robust api endpoints.
 - **`shortner_api`**: Express/TypeScript API handling link redirection, analytics, and business logic.
 - **`packages/`**: Shared configurations and utilities across the workspace.
 
