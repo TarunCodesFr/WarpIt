@@ -23,16 +23,39 @@ model Users {
 }
 
 model Link {
-  id          String   @id @default(cuid())
-  shortCode   String   @unique
-  redirectUrl String
-  createdAt   DateTime @default(now())
-  userId      Int?
-  users       Users?   @relation(fields: [usersId], references: [id])
-  usersId     Int?
+  id              String            @id @default(cuid())
+  shortCode       String            @unique
+  redirectUrl     String
+  createdAt       DateTime          @default(now())
+  userId          Int?
+  users           Users?            @relation(fields: [usersId], references: [id])
+  usersId         Int?
+  normalAnalytics NormalAnalytics[]
 
   @@index([shortCode])
   @@index([userId])
+}
+
+model NormalAnalytics {
+  id     String @id @default(cuid())
+  linkId String
+  link   Link   @relation(fields: [linkId], references: [id], onDelete: Cascade)
+
+  // Visitor information
+  ipAddress String?
+  userAgent String?
+  referer   String?
+  country   String?
+  city      String?
+  device    String? // mobile, desktop, tablet
+  browser   String? // chrome, firefox, safari, etc.
+  os        String? // windows, mac, linux, ios, android
+
+  createdAt DateTime @default(now())
+
+  @@index([linkId])
+  @@index([createdAt])
+  @@index([country])
 }
 
 model Subscription {
