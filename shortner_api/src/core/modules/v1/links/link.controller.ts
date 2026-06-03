@@ -28,7 +28,7 @@ export async function createRedirectLink(req: Request, res: Response) {
 export async function redirectToOriginalLink(req: Request, res: Response) {
 	const shortCode = req.params.shortCode as string;
 	if (!shortCode) {
-		throw new ApiError(200, 'BAD_REQUEST', 'No URL Code is found!');
+		throw new ApiError(200, 'BAD_REQUEST', 'A short code is needed to get the original Link');
 	}
 
 	try {
